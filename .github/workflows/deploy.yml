@@ -14,13 +14,11 @@ jobs:
     - name: Checkout Repository
       uses: actions/checkout@v4
 
-    - name: Deploy via SFTP
-      uses: wlixcc/SFTP-Deploy-Action@v1.2.4
+    - name: Deploy via FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
       with:
         server: vh314.timeweb.ru
-        username: co89321
-        password: ${{ secrets.SFTP_PASSWORD }}
-        local_path: './*'
-        remote_path: '/home/c/co89321/public_html/test/github_cc_autodeploy'
-        sftp_only: true
-        delete_remote_files: false
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: test/github_cc_autodeploy/
+        timeout: 300000
