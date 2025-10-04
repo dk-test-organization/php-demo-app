@@ -13,12 +13,12 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    - name: Deploy to server via FTP
-      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+    - name: Deploy files via FTP
+      uses: airvzxf/ftp-deployment-action@latest
       with:
         server: vh314.timeweb.ru
-        username: ${{ secrets.FTP_USERNAME }}
+        user: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: /test/github_cc_autodeploy/
-        protocol: ftps
-        port: 21
+        local_dir: "./"
+        remote_dir: "/test/github_cc_autodeploy"
+        delete: "false"
