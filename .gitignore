@@ -1,0 +1,68 @@
+# IDE and Editor files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+error_log
+access_log
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*.swo
+*~
+
+# Environment files (содержат секреты!)
+.env
+.env.local
+.env.*.local
+config/secrets.php
+
+# Vendor dependencies (если используете Composer)
+/vendor/
+composer.lock
+
+# Node modules (если используете Node.js для сборки)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Build artifacts
+/dist/
+/build/
+
+# Cache files
+cache/
+tmp/
+
+# Upload directories (файлы пользователей)
+uploads/
+files/
+
+# Backup files
+*.bak
+*.backup
+backup/
+backups/
+
+# Sensitive data
+*.pem
+*.key
+*.p12
+credentials.json
