@@ -1,22 +1,29 @@
-  name: Deploy to Timeweb
+name: Deploy to FTP
 
-  on:
-    push:
-      branches:
-        - master
+on:
+  push:
+    branches:
+      - main
+      - master
 
-  jobs:
-    deploy:
-      runs-on: ubuntu-latest
-
-      steps:
+jobs:
+  deploy:
+    name: Deploy to production server
+    runs-on: ubuntu-latest
+    
+    steps:
       - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        uses: actions/checkout@v4
+      
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: vh314.timeweb.ru
           username: co89321_wdc
           password: Rd220911
           server-dir: /test/github_cc_autodeploy/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
