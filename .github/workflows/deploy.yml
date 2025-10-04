@@ -16,10 +16,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       
-      - name: Deploy via FTP
+      - name: Deploy via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: vh314.timeweb.ru
+          protocol: ftps
           username: co89321_wdc
           password: Rd220911
           server-dir: /test/github_cc_autodeploy/
