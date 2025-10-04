@@ -1,28 +1,22 @@
-name: Deploy to SFTP
+name: Deploy to Timeweb
 
 on:
   push:
     branches:
-      - main
       - master
 
 jobs:
   deploy:
-    name: Deploy to production server
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-      
-      - name: Deploy via SFTP
-        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
-        with:
-          server: vh314.timeweb.ru
-          username: co89321
-          password: DIMONq2dm1
-          port: 22
-          local_path: './*'
-          remote_path: '/home/c/co89321/public_html/test/github_cc_autodeploy/'
-          sftp_only: true
-          delete_remote_files: false
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Deploy to server via FTP
+      uses: SamKirkland/FTP-Deploy-Action@4.3.0
+      with:
+        server: vh314.timeweb.ru
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: ${{ secrets.DEPLOY_PATH }}/
